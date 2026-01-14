@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  god-mode:
+    build: .
+    container_name: god_mode_lab
+    
+    # --- HARDWARE ACCESS ---
+    privileged: true
+    
+    # --- VISUAL BRIDGE ---
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY}  # Automatically grabs your Host's screen ID (e.g., :1)
+      
+    # --- PERSISTENCE LAYER ---
+    volumes:
+      - ./workspace:/root/workspace
+      # Map X11 sockets so the GUI can "talk" to the screen
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - $HOME/.Xauthority:/root/.Xauthority:rw
+      
+    restart: unless-stopped
