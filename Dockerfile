@@ -15,13 +15,14 @@ RUN apt-get update && apt-get install -y \
 
 # --- LAYER 2: AI RUNTIMES ---
 # Node.js 22.x is required for the latest Anthropic/Google CLI tools.
+# Version pinned for reproducible builds and security
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
-    apt-get install -y nodejs
+    apt-get install -y nodejs=22.22.0-1nodesource1
 
 # --- LAYER 3: THE AI TOOLBOX ---
 # Pre-installing public CLI tools with pinned versions for security.
 # Note: Antigravity is manual (via volume) as it is a Preview .deb.
-RUN npm install -g @anthropic-ai/claude-code@latest @google/gemini-cli@latest
+RUN npm install -g @anthropic-ai/claude-code@2.1.14 @google/gemini-cli@0.25.0
 
 # --- LAYER 3.5: DOCKER DAEMON CONFIGURATION ---
 # Configure Docker-in-Docker with log rotation and storage driver

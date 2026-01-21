@@ -108,6 +108,7 @@ The project includes a `Makefile` to simplify common operations.
 | `make force-install` | Rebuild from scratch (no cache) |
 | `make test` | Run the diagnostic suite |
 | `make test-gui` | Test GUI applications interactively |
+| `make scan` | Run Trivy vulnerability scan |
 | `make backup` | Run the backup script |
 | `make monitor` | Run the system monitor |
 | `make update` | Run the update workflow |

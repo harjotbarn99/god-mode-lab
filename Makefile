@@ -100,4 +100,10 @@ test-gui:
 	@echo "${GREEN}[+] Testing GUI applications...${RESET}"
 	@./scripts/test_gui.sh
 
-.PHONY: help start up stop down restart logs shell build force-install clean test backup monitor update test-gui
+## Scan: Run Trivy vulnerability scan
+scan:
+	@echo "${YELLOW}[!] Running security vulnerability scan...${RESET}"
+	@docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+		aquasec/trivy:latest image --severity HIGH,CRITICAL god_mode_lab-god-mode:latest
+
+.PHONY: help start up stop down restart logs shell build force-install clean test backup monitor update test-gui scan
