@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # ==========================================
 # ISOLATION SAFETY PROTOCOL v1.0

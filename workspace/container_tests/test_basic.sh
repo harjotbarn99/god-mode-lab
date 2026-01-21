@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # ==========================================
 # GOD MODE DIAGNOSTIC PROTOCOL v1.0

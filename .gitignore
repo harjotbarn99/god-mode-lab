@@ -1,1 +1,3 @@
 .agent/
+.env.secrets
+scripts/backups/

@@ -93,9 +93,30 @@ docker compose up -d --build
 
 ---
 
-## 5. Usage Guide
+## 5. Manage with Make (Recommended)
 
-### 5.1 Entering the Lab
+The project includes a `Makefile` to simplify common operations.
+
+| Command | Description |
+| :--- | :--- |
+| `make up` | Start the environment in the background |
+| `make down` | Stop the container |
+| `make restart` | Restart the container |
+| `make logs` | Follow the container logs |
+| `make shell` | Enter the container's terminal |
+| `make clean` | Stop and remove orphans/networks |
+| `make force-install` | Rebuild from scratch (no cache) |
+| `make test` | Run the diagnostic suite |
+| `make test-gui` | Test GUI applications interactively |
+| `make backup` | Run the backup script |
+| `make monitor` | Run the system monitor |
+| `make update` | Run the update workflow |
+
+---
+
+## 6. Usage Guide
+
+### 6.1 Entering the Lab
 
 To access the terminal of your clean room:
 
@@ -104,7 +125,7 @@ docker exec -it god_mode_lab bash
 
 ```
 
-### 5.2 Launching Tools
+### 6.2 Launching Tools
 
 **Google Antigravity (IDE):**
 *Note: You must install the `.deb` file manually the first time.*
@@ -138,7 +159,7 @@ gemini
 
 ```
 
-### 5.3 Verifying Docker-in-Docker
+### 6.3 Verifying Docker-in-Docker
 
 Inside the lab, you can test if the nested Docker engine is working:
 
@@ -149,7 +170,7 @@ docker run --rm hello-world
 
 ---
 
-## 6. Maintenance & Diagnostics
+## 7. Maintenance & Diagnostics
 
 ### Auto-Fixing the Engine
 
@@ -179,7 +200,7 @@ Run the included diagnostic script to verify all systems:
 
 ---
 
-## 7. Security Disclaimer
+## 8. Security Disclaimer
 
 This environment runs with **`privileged: true`**.
 
@@ -188,7 +209,7 @@ This environment runs with **`privileged: true`**.
 
 ---
 
-## 8. Troubleshooting
+## 9. Troubleshooting
 
 **Error: `Authorization required, but no authorization protocol specified**`
 
