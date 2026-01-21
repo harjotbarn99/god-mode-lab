@@ -22,16 +22,16 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       # Note: .Xauthority mount disabled - not needed with xhost +local:root
       - $HOME/.Xauthority:/root/.Xauthority:rw
-      # --- RESOURCE LIMITS ---
-      # deploy:
-      #   resources:
-      #     limits:
-      #       cpus: '6.0'
-      #       memory: 16G
-      #     reservations:
-      #       cpus: '2.0'
-      #       memory: 4G
 
+    # --- RESOURCE LIMITS ---
+    deploy:
+      resources:
+        limits:
+          cpus: '6.0'
+          memory: 16G
+        reservations:
+          cpus: '2.0'
+          memory: 4G
       # --- HEALTH CHECK ---
     healthcheck:
       test: [ "CMD", "docker", "version" ]
