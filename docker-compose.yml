@@ -4,10 +4,18 @@ services:
     container_name: god_mode_lab
 
     # --- HARDWARE ACCESS ---
+    # NOTE: Docker-in-Docker REQUIRES privileged: true
+    # Attempted to use minimal capabilities (SYS_ADMIN, NET_ADMIN) but failed because:
+    # - DinD needs write access to /sys/fs/cgroup for container cgroup management
+    # - Capabilities alone cannot grant this access (read-only mount)
+    # - Error: "mkdir /sys/fs/cgroup/docker: read-only file system"
+    # SECURITY TRADE-OFF: Accepting privileged mode as necessary for core functionality
     privileged: true
 
     # --- VISUAL BRIDGE ---
-    network_mode: host
+    # NOTE: Using bridge networking (default) for better security isolation
+    # X11 communication uses Unix sockets (/tmp/.X11-unix), not network
+    # network_mode: host removed - not needed for GUI functionality
     environment:
       - DISPLAY=${DISPLAY} # Automatically grabs your Host's screen ID (e.g., :1)
 
